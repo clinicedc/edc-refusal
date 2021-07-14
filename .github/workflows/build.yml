@@ -4,20 +4,17 @@ on: [push, pull_request]
 
 jobs:
   build:
-    name: build (${{ matrix.codebase }}, Django ${{ matrix.django-version }}, Python ${{ matrix.python-version }})
+    name: build (Python ${{ matrix.python-version }}, Django ${{ matrix.django-version }})
     runs-on: ubuntu-latest
 
     strategy:
       fail-fast: false
       matrix:
-        codebase: ['Supported', 'Develop']
-        django-version: ['3.2', 'dev']
         python-version: ['3.9']
-        exclude:
-          - codebase: 'Supported'
-            django-version: 'dev'
+        django-version: ['3.2']
 
     services:
+
       mysql:
         image: mysql:latest
         env:
@@ -58,12 +55,12 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install -r https://raw.githubusercontent.com/clinicedc/edc/develop/requirements.tests/tox.txt
 
+
     - name: Tox tests
       run: |
         tox -v
       env:
         DJANGO: ${{ matrix.django-version }}
-        EDC_CODEBASE: ${{ matrix.codebase }}
 
     - name: Upload coverage
       uses: codecov/codecov-action@v1
