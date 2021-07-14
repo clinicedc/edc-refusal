@@ -17,7 +17,6 @@ DEFAULT_SETTINGS = DefaultTestSettings(
     BASE_DIR=base_dir,
     APP_NAME=app_name,
     ETC_DIR=os.path.join(base_dir, app_name, "tests", "etc"),
-    edc_refusal_LIST_PATH=os.path.join(base_dir, app_name, "tests", "etc"),
     INSTALLED_APPS=[
         "django.contrib.admin",
         "django.contrib.auth",
@@ -34,6 +33,8 @@ DEFAULT_SETTINGS = DefaultTestSettings(
         "edc_identifier.apps.AppConfig",
         "edc_protocol.apps.AppConfig",
         "edc_sites.apps.AppConfig",
+        "edc_screening.apps.AppConfig",
+        "edc_list_data.apps.AppConfig",
         "edc_refusal.apps.AppConfig",
     ],
     add_dashboard_middleware=True,
