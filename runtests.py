@@ -13,6 +13,7 @@ project_settings = DefaultTestSettings(
     APP_NAME=app_name,
     SUBJECT_VISIT_MODEL="edc_visit_tracking.subjectvisit",
     ETC_DIR=str(base_dir / app_name / "tests" / "etc"),
+    EDC_SITES_REGISTER_DEFAULT=True,
     INSTALLED_APPS=[
         "django.contrib.admin",
         "django.contrib.auth",
